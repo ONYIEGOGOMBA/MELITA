@@ -1,0 +1,22 @@
+<div class="home-container">
+    <button mat-raised-button color="accent" (click)="onLogout()">Logout</button>
+    <button mat-raised-button color="primary" (click)="onRefresh()" [disabled]="refreshCountdown !== null">
+      {{ refreshCountdown ? refreshCountdown + ' seconds remaining' : 'Refresh' }}
+    </button>
+  
+    <div class="offers">
+      <h2>Offers</h2>
+      <mat-card *ngFor="let offer of offers$ | async">
+        <h3>{{ offer.name }}</h3>
+        <p>Contract Start Date: {{ offer.contractStartDate }}</p>
+      </mat-card>
+    </div>
+  
+    <div class="subscriptions">
+      <h2>Subscriptions</h2>
+      <mat-card *ngFor="let subscription of subscriptions$ | async">
+        <h3>{{ subscription.name }}</h3>
+        <p>Line: {{ subscription.line }}</p>
+      </mat-card>
+    </div>
+  </div>  
